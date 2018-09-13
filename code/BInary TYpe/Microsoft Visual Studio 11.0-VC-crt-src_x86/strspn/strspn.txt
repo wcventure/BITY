@@ -1,6 +1,0 @@
-function: strspn()
-parameter: char *string
-parameter: char *control
-variable: char map[32];
-variable: int count;
-----------

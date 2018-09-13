@@ -1,5 +1,0 @@
-function: strrchr()
-parameter: char *string
-parameter: char ch
-variable: char *start = string;
-----------

@@ -1,6 +1,0 @@
-function: strncat()
-parameter: char *front
-parameter: char *back
-parameter: unsigned int count
-variable: char *start;
-----------

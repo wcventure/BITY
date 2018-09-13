@@ -1,4 +1,0 @@
-function: strlen()
-parameter: const char * str
-variable: int length = 0;
-----------

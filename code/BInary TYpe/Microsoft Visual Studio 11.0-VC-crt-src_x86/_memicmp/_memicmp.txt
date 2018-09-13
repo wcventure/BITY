@@ -1,5 +1,0 @@
-function: _memicmp(char *first, char *last, unsigned int count)
-parameter: char *first
-parameter: char *last
-parameter: unsigned int count
-----------

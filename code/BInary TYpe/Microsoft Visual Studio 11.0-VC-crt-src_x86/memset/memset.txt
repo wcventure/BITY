@@ -1,6 +1,0 @@
-function: memset()
-parameter: char *dst
-parameter: char value
-parameter: unsigned int count
-variable: char *start = dst;
-----------

@@ -1,6 +1,0 @@
-function: _strrev()
-parameter: char *string
-variable: char *start = string;
-variable: char *left = string;
-variable: char ch;
-----------

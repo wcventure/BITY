@@ -14,8 +14,7 @@ label=[]
 name=[]
 
 #导入测试数据集
-path ='TestData_x86-SK'
-#path ='TrainData_x86'
+path ='TrainData_x86'
 #path ='TestData_x64'
 #path = 'Microsoft Visual Studio 11.0-VC-crt-src_x86'
 

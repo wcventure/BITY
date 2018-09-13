@@ -1,7 +1,0 @@
-function: strcmp()
-parameter: char *str1
-parameter: char *str2
-variable: char *src1;
-variable: char *src2;
-variable: int ret = 0;
-----------

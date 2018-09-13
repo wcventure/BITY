@@ -1,5 +1,0 @@
-function: memchr(char *buf,int chr,unsigned int cnt)
-parameter: char *buf
-parameter: int chr
-parameter: unsigned int cnt
-----------
