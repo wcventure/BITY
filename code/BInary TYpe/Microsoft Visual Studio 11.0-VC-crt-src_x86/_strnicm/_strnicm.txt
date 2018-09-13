@@ -1,0 +1,7 @@
+function: _strncmpi()
+parameter: char *first
+parameter: char *last
+parameter: unsigned int count
+variable: int f,l;
+variable: int result = 0;
+----------

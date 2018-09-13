@@ -1,0 +1,40 @@
+memchr          proc near
+
+arg_0           = dword ptr  8
+arg_4           = dword ptr  0Ch
+arg_8           = dword ptr  10h
+
+                push    ebp
+                mov     ebp, esp
+                jmp     short loc_8048404
+; ---------------------------------------------------------------------------
+
+loc_8048400:                            ; CODE XREF: memchr+21j
+                sub     [ebp+arg_8], 1
+
+loc_8048404:                            ; CODE XREF: memchr+3j
+                cmp     [ebp+arg_8], 0
+                jz      short loc_804841E
+                mov     eax, [ebp+arg_0]
+                lea     edx, [eax+1]
+                mov     [ebp+arg_0], edx
+                movzx   eax, byte ptr [eax]
+                movsx   eax, al
+                cmp     eax, [ebp+arg_4]
+                jnz     short loc_8048400
+
+loc_804841E:                            ; CODE XREF: memchr+Dj
+                cmp     [ebp+arg_8], 0
+                jz      short loc_804842D
+                sub     [ebp+arg_0], 1
+                mov     eax, [ebp+arg_0]
+                jmp     short loc_8048432
+; ---------------------------------------------------------------------------
+
+loc_804842D:                            ; CODE XREF: memchr+27j
+                mov     eax, 0
+
+loc_8048432:                            ; CODE XREF: memchr+30j
+                pop     ebp
+                retn
+memchr          endp

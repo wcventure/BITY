@@ -1,0 +1,11 @@
+bool
+char
+int
+float
+short
+double
+longlongint
+ptr
+struct
+FuncPtr
+#

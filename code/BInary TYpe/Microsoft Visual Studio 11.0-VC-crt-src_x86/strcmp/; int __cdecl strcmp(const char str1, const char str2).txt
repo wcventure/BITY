@@ -1,0 +1,65 @@
+; int __cdecl strcmp(const char str1, const char str2)
+strcmp@@YAHPBD0@Z proc near            ; CODE XREF _main+1Fp
+
+ret             = dword ptr -0Ch
+src2            = dword ptr -8
+src1            = dword ptr -4
+str1            = dword ptr  8
+str2            = dword ptr  0Ch
+
+                push    ebp
+                mov     ebp, esp
+                sub     esp, 4Ch
+                push    ebx
+                push    esi
+                push    edi
+                mov     eax, [ebp+str1]
+                mov     [ebp+src1], eax
+                mov     eax, [ebp+str2]
+                mov     [ebp+src2], eax
+                mov     [ebp+ret], 0
+
+loc_40101C                             ; CODE XREF strcmp(char const ,char const )+4Bj
+                mov     eax, [ebp+src1]
+                movzx   ecx, byte ptr [eax]
+                mov     edx, [ebp+src2]
+                movzx   eax, byte ptr [edx]
+                sub     ecx, eax
+                mov     [ebp+ret], ecx
+                jnz     short loc_40104D
+                mov     eax, [ebp+src2]
+                movzx   ecx, byte ptr [eax]
+                test    ecx, ecx
+                jz      short loc_40104D
+                mov     eax, [ebp+src1]
+                add     eax, 1
+                mov     [ebp+src1], eax
+                mov     ecx, [ebp+src2]
+                add     ecx, 1
+                mov     [ebp+src2], ecx
+                jmp     short loc_40101C
+; ---------------------------------------------------------------------------
+
+loc_40104D                             ; CODE XREF strcmp(char const ,char const )+2Dj
+                                        ; strcmp(char const ,char const )+37j
+                cmp     [ebp+ret], 0
+                jge     short loc_40105C
+                mov     [ebp+ret], 0FFFFFFFFh
+                jmp     short loc_401069
+; ---------------------------------------------------------------------------
+
+loc_40105C                             ; CODE XREF strcmp(char const ,char const )+51j
+                cmp     [ebp+ret], 0
+                jle     short loc_401069
+                mov     [ebp+ret], 1
+
+loc_401069                             ; CODE XREF strcmp(char const ,char const )+5Aj
+                                        ; strcmp(char const ,char const )+60j
+                mov     eax, [ebp+ret]
+                pop     edi
+                pop     esi
+                pop     ebx
+                mov     esp, ebp
+                pop     ebp
+                retn
+strcmp@@YAHPBD0@Z endp

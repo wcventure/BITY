@@ -1,0 +1,51 @@
+; char *__cdecl strchr(char *string, char chr)
+?strchr@@YAPADPADD@Z proc near          ; CODE XREF: _main+48p
+
+string          = dword ptr  8
+chr             = byte ptr  0Ch
+
+                push    ebp
+                mov     ebp, esp
+                sub     esp, 40h
+                push    ebx
+                push    esi
+                push    edi
+
+loc_401009:                             ; CODE XREF: strchr(char *,char)+2Aj
+                mov     eax, [ebp+string]
+                movsx   ecx, byte ptr [eax]
+                test    ecx, ecx
+                jz      short loc_40102C
+                mov     eax, [ebp+string]
+                movsx   ecx, byte ptr [eax]
+                movsx   edx, [ebp+chr]
+                cmp     ecx, edx
+                jz      short loc_40102C
+                mov     eax, [ebp+string]
+                add     eax, 1
+                mov     [ebp+string], eax
+                jmp     short loc_401009
+; ---------------------------------------------------------------------------
+
+loc_40102C:                             ; CODE XREF: strchr(char *,char)+11j
+                                        ; strchr(char *,char)+1Fj
+                mov     eax, [ebp+string]
+                movsx   ecx, byte ptr [eax]
+                movsx   edx, [ebp+chr]
+                cmp     ecx, edx
+                jnz     short loc_40103F
+                mov     eax, [ebp+string]
+                jmp     short loc_401041
+; ---------------------------------------------------------------------------
+
+loc_40103F:                             ; CODE XREF: strchr(char *,char)+38j
+                xor     eax, eax
+
+loc_401041:                             ; CODE XREF: strchr(char *,char)+3Dj
+                pop     edi
+                pop     esi
+                pop     ebx
+                mov     esp, ebp
+                pop     ebp
+                retn
+?strchr@@YAPADPADD@Z endp

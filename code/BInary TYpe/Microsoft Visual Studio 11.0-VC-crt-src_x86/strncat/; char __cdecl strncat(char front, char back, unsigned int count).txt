@@ -1,0 +1,79 @@
+; char __cdecl strncat(char front, char back, unsigned int count)
+strncat@@YAPADPAD0I@Z proc near        ; CODE XREF _main+57p
+
+var_48          = dword ptr -48h
+start           = dword ptr -4
+front           = dword ptr  8
+back            = dword ptr  0Ch
+count           = dword ptr  10h
+
+                push    ebp
+                mov     ebp, esp
+                sub     esp, 48h
+                push    ebx
+                push    esi
+                push    edi
+                mov     eax, [ebp+front]
+                mov     [ebp+start], eax
+
+loc_40100F                             ; CODE XREF strncat(char ,char ,uint)+27j
+                mov     eax, [ebp+front]
+                movsx   ecx, byte ptr [eax]
+                mov     [ebp+var_48], ecx
+                mov     edx, [ebp+front]
+                add     edx, 1
+                mov     [ebp+front], edx
+                cmp     [ebp+var_48], 0
+                jz      short loc_401029
+                jmp     short loc_40100F
+; ---------------------------------------------------------------------------
+
+loc_401029                             ; CODE XREF strncat(char ,char ,uint)+25j
+                mov     eax, [ebp+front]
+                sub     eax, 1
+                mov     [ebp+front], eax
+
+loc_401032                             ; CODE XREF strncat(char ,char ,uint)loc_401077j
+                mov     eax, [ebp+count]
+                mov     [ebp+var_48], eax
+                mov     ecx, [ebp+count]
+                sub     ecx, 1
+                mov     [ebp+count], ecx
+                cmp     [ebp+var_48], 0
+                jz      short loc_401079
+                mov     eax, [ebp+front]
+                mov     ecx, [ebp+back]
+                mov     dl, [ecx]
+                mov     [eax], dl
+                mov     eax, [ebp+front]
+                movsx   ecx, byte ptr [eax]
+                mov     [ebp+var_48], ecx
+                mov     edx, [ebp+front]
+                add     edx, 1
+                mov     [ebp+front], edx
+                mov     eax, [ebp+back]
+                add     eax, 1
+                mov     [ebp+back], eax
+                cmp     [ebp+var_48], 0
+                jnz     short loc_401077
+                mov     eax, [ebp+start]
+                jmp     short loc_401082
+; ---------------------------------------------------------------------------
+
+loc_401077                             ; CODE XREF strncat(char ,char ,uint)+70j
+                jmp     short loc_401032
+; ---------------------------------------------------------------------------
+
+loc_401079                             ; CODE XREF strncat(char ,char ,uint)+45j
+                mov     eax, [ebp+front]
+                mov     byte ptr [eax], 0
+                mov     eax, [ebp+start]
+
+loc_401082                             ; CODE XREF strncat(char ,char ,uint)+75j
+                pop     edi
+                pop     esi
+                pop     ebx
+                mov     esp, ebp
+                pop     ebp
+                retn
+strncat@@YAPADPAD0I@Z endp

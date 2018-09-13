@@ -1,0 +1,6 @@
+function: strncpy()
+parameter: char *dest
+parameter: char *source
+parameter: unsigned int count
+variable: char *start = dest;
+----------

@@ -1,0 +1,120 @@
+byte
+word
+dword
+qword
+bias in stackframe
+[address]
+[?+address+?]
+mov reg
+mov ax
+mov al
+lea reg _
+lea xmm _
+cmp reg
+cmp ax
+cmp al
+movz reg
+movx reg
+mosx reg
+mozx reg
+movsv reg
+movsx reg
+movzx reg
+movzx al
+movsxd reg
+cmovge reg
+cmovbe reg
+cmovnb reg
+add reg _
+sub reg _
+add _ reg
+sub _ reg
+adc reg _
+sbb reg _
+adc _ reg
+sbb _ reg
+imul reg _
+xor reg _
+and reg _
+shl reg _
+test reg _
+shr reg _
+shrd reg _
+or reg _
+or _ reg
+cvtsd
+cvtss
+cvtsi
+sar reg _
+xor xmm _
+and xmm _
+movss xmm
+movsd xmm
+addsd xmm _
+addss xmm _
+subsd xmm _
+subss xmm _
+mulsd xmm _
+mulss xmm _
+divsd xmm _
+divss xmm _
+comiss xmm _
+comisd xmm _
+ucomiss xmm _
+ucomisd xmm _
+unpcklps xmm _
+xorps xmm _
+mov _ offset
+cmp _ offset
+mov _ bool
+mov _ imm
+cmp _ bool
+cmp _ imm
+add _ imm
+adc _ imm
+sub _ imm
+sbb _ imm
+and _ imm
+xor _ imm
+or _ imm
+mul _
+div _
+idiv _
+fstp _
+fdiv _
+fld _
+neg _
+mov rregg
+cmp rregg
+movz rregg
+movx rregg
+mosx rregg
+mozx rregg
+movsv rregg
+movsx rregg
+movzx rregg
+add rregg _
+add _ rregg
+sub rregg _
+sub _ rregg
+mul rregg _
+imul rregg _
+xor rregg _
+and rregg _
+shl rregg _
+test rregg _
+shr rregg _
+or rregg _
+lea rregg _
+sar rregg _
+FPchar
+FPbool
+FPint
+FPfloat
+FPshort
+FPdouble
+FPlonglongint
+FPFILE
+FPFunc
+FPptr
+#

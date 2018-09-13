@@ -1,0 +1,5 @@
+function: _strset()
+parameter: char *string
+parameter: char val
+variable: char *start = string;
+----------

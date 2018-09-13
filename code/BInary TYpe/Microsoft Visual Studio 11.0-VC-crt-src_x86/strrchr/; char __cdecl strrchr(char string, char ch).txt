@@ -1,0 +1,68 @@
+
+; char __cdecl strrchr(char string, char ch)
+strrchr@@YAPADPADD@Z proc near         ; CODE XREF _main+1Dp
+
+var_48          = dword ptr -48h
+start           = dword ptr -4
+string          = dword ptr  8
+ch           = byte ptr  0Ch
+
+                push    ebp
+                mov     ebp, esp
+                sub     esp, 48h
+                push    ebx
+                push    esi
+                push    edi
+                mov     eax, [ebp+string]
+                mov     [ebp+start], eax
+
+loc_40100F                             ; CODE XREF strrchr(char ,char)+27j
+                mov     eax, [ebp+string]
+                movsx   ecx, byte ptr [eax]
+                mov     [ebp+var_48], ecx
+                mov     edx, [ebp+string]
+                add     edx, 1
+                mov     [ebp+string], edx
+                cmp     [ebp+var_48], 0
+                jz      short loc_401029
+                jmp     short loc_40100F
+; ---------------------------------------------------------------------------
+
+loc_401029                             ; CODE XREF strrchr(char ,char)+25j
+                                        ; strrchr(char ,char)+48j
+                mov     eax, [ebp+string]
+                sub     eax, 1
+                mov     [ebp+string], eax
+                mov     ecx, [ebp+string]
+                cmp     ecx, [ebp+start]
+                jz      short loc_40104A
+                mov     eax, [ebp+string]
+                movsx   ecx, byte ptr [eax]
+                movsx   edx, [ebp+ch]
+                cmp     ecx, edx
+                jz      short loc_40104A
+                jmp     short loc_401029
+; ---------------------------------------------------------------------------
+
+loc_40104A                             ; CODE XREF strrchr(char ,char)+38j
+                                        ; strrchr(char ,char)+46j
+                mov     eax, [ebp+string]
+                movsx   ecx, byte ptr [eax]
+                movsx   edx, [ebp+ch]
+                cmp     ecx, edx
+                jnz     short loc_40105D
+                mov     eax, [ebp+string]
+                jmp     short loc_40105F
+; ---------------------------------------------------------------------------
+
+loc_40105D                             ; CODE XREF strrchr(char ,char)+56j
+                xor     eax, eax
+
+loc_40105F                             ; CODE XREF strrchr(char ,char)+5Bj
+                pop     edi
+                pop     esi
+                pop     ebx
+                mov     esp, ebp
+                pop     ebp
+                retn
+strrchr@@YAPADPADD@Z endp

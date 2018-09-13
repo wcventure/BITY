@@ -1,0 +1,6 @@
+function: _memccpy()
+parameter: char *dest
+parameter: char *src
+parameter: char _c
+parameter: unsigned int count
+----------

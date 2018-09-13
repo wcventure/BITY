@@ -1,0 +1,60 @@
+; char __cdecl memchr(char buf, int chr, unsigned int cnt)
+memchr@@YAPADPADHI@Z proc near         ; CODE XREF _main+18p
+
+var_48          = dword ptr -48h
+var_44          = dword ptr -44h
+buf             = dword ptr  8
+chr             = dword ptr  0Ch
+cnt             = dword ptr  10h
+
+                push    ebp
+                mov     ebp, esp
+                sub     esp, 48h
+                push    ebx
+                push    esi
+                push    edi
+
+loc_401009                             ; CODE XREF memchr(char ,int,uint)+38j
+                cmp     [ebp+cnt], 0
+                jz      short loc_40103A
+                mov     eax, [ebp+buf]
+                movsx   ecx, byte ptr [eax]
+                mov     [ebp+var_44], ecx
+                mov     edx, [ebp+chr]
+                mov     [ebp+var_48], edx
+                mov     eax, [ebp+buf]
+                add     eax, 1
+                mov     [ebp+buf], eax
+                mov     ecx, [ebp+var_44]
+                cmp     ecx, [ebp+var_48]
+                jz      short loc_40103A
+                mov     eax, [ebp+cnt]
+                sub     eax, 1
+                mov     [ebp+cnt], eax
+                jmp     short loc_401009
+; ---------------------------------------------------------------------------
+
+loc_40103A                             ; CODE XREF memchr(char ,int,uint)+Dj
+                                        ; memchr(char ,int,uint)+2Dj
+                cmp     [ebp+cnt], 0
+                jz      short loc_401051
+                mov     eax, [ebp+buf]
+                sub     eax, 1
+                mov     [ebp+buf], eax
+                mov     ecx, [ebp+buf]
+                mov     [ebp+var_44], ecx
+                jmp     short loc_401058
+; ---------------------------------------------------------------------------
+
+loc_401051                             ; CODE XREF memchr(char ,int,uint)+3Ej
+                mov     [ebp+var_44], 0
+
+loc_401058                             ; CODE XREF memchr(char ,int,uint)+4Fj
+                mov     eax, [ebp+var_44]
+                pop     edi
+                pop     esi
+                pop     ebx
+                mov     esp, ebp
+                pop     ebp
+                retn
+memchr@@YAPADPADHI@Z endp

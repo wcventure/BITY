@@ -1,0 +1,39 @@
+; int __cdecl strlen(const char str)
+strlen@@YAHPBD@Z proc near             ; CODE XREF _main+14p
+
+var_48          = dword ptr -48h
+length          = dword ptr -4
+str             = dword ptr  8
+
+                push    ebp
+                mov     ebp, esp
+                sub     esp, 48h
+                push    ebx
+                push    esi
+                push    edi
+                mov     [ebp+length], 0
+
+loc_401010                             ; CODE XREF strlen(char const )+31j
+                mov     eax, [ebp+str]
+                movsx   ecx, byte ptr [eax]
+                mov     [ebp+var_48], ecx
+                mov     edx, [ebp+str]
+                add     edx, 1
+                mov     [ebp+str], edx
+                cmp     [ebp+var_48], 0
+                jz      short loc_401033
+                mov     eax, [ebp+length]
+                add     eax, 1
+                mov     [ebp+length], eax
+                jmp     short loc_401010
+; ---------------------------------------------------------------------------
+
+loc_401033                             ; CODE XREF strlen(char const )+26j
+                mov     eax, [ebp+length]
+                pop     edi
+                pop     esi
+                pop     ebx
+                mov     esp, ebp
+                pop     ebp
+                retn
+strlen@@YAHPBD@Z endp

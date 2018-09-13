@@ -1,0 +1,4 @@
+function: strchr()
+parameter: char *string
+parameter: char chr
+----------

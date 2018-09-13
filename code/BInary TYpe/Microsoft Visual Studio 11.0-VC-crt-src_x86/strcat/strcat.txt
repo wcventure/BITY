@@ -1,0 +1,5 @@
+function: strcat(char * dst, char * src)
+parameter: char * dst
+parameter: char * src
+variable: char * cp = dst;
+----------

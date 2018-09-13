@@ -1,0 +1,70 @@
+; char __cdecl strncpy(char dest, char source, unsigned int count)
+strncpy@@YAPADPAD0I@Z proc near        ; CODE XREF _main+58p
+
+var_48          = dword ptr -48h
+start           = dword ptr -4
+dest            = dword ptr  8
+source          = dword ptr  0Ch
+count           = dword ptr  10h
+
+                push    ebp
+                mov     ebp, esp
+                sub     esp, 48h
+                push    ebx
+                push    esi
+                push    edi
+                mov     eax, [ebp+dest]
+                mov     [ebp+start], eax
+
+loc_40100F                             ; CODE XREF strncpy(char ,char ,uint)+49j
+                cmp     [ebp+count], 0
+                jz      short loc_40104B
+                mov     eax, [ebp+dest]
+                mov     ecx, [ebp+source]
+                mov     dl, [ecx]
+                mov     [eax], dl
+                mov     eax, [ebp+dest]
+                movsx   ecx, byte ptr [eax]
+                mov     [ebp+var_48], ecx
+                mov     edx, [ebp+dest]
+                add     edx, 1
+                mov     [ebp+dest], edx
+                mov     eax, [ebp+source]
+                add     eax, 1
+                mov     [ebp+source], eax
+                cmp     [ebp+var_48], 0
+                jz      short loc_40104B
+                mov     eax, [ebp+count]
+                sub     eax, 1
+                mov     [ebp+count], eax
+                jmp     short loc_40100F
+; ---------------------------------------------------------------------------
+
+loc_40104B                             ; CODE XREF strncpy(char ,char ,uint)+13j
+                                        ; strncpy(char ,char ,uint)+3Ej
+                cmp     [ebp+count], 0
+                jz      short loc_40106D
+
+loc_401051                             ; CODE XREF strncpy(char ,char ,uint)+6Bj
+                mov     eax, [ebp+count]
+                sub     eax, 1
+                mov     [ebp+count], eax
+                jz      short loc_40106D
+                mov     eax, [ebp+dest]
+                mov     byte ptr [eax], 0
+                mov     ecx, [ebp+dest]
+                add     ecx, 1
+                mov     [ebp+dest], ecx
+                jmp     short loc_401051
+; ---------------------------------------------------------------------------
+
+loc_40106D                             ; CODE XREF strncpy(char ,char ,uint)+4Fj
+                                        ; strncpy(char ,char ,uint)+5Aj
+                mov     eax, [ebp+start]
+                pop     edi
+                pop     esi
+                pop     ebx
+                mov     esp, ebp
+                pop     ebp
+                retn
+strncpy@@YAPADPAD0I@Z endp

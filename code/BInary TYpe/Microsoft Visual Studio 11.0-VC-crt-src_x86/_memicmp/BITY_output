@@ -1,0 +1,10 @@
+**********************************************************************
+SaveData\Microsoft Visual Studio 11.0-VC-crt-src_x86\_memicmp:
+
+_memicmp:first                               	8         		char*
+_memicmp:last                                	0Ch       		char*
+_memicmp:count                               	10h       		int
+
+@ @ @ end @ @ @
+**********************************************************************
+

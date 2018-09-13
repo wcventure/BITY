@@ -1,0 +1,6 @@
+function: _strnset()
+parameter: char *string
+parameter: char val
+parameter: unsigned int count
+variable: char *start = string;
+----------

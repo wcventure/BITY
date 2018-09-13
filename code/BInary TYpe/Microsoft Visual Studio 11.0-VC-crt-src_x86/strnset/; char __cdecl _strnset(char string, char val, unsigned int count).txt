@@ -1,0 +1,49 @@
+; char __cdecl _strnset(char string, char val, unsigned int count)
+_strnset@@YAPADPADDI@Z proc near       ; CODE XREF _main+56p
+
+var_48          = dword ptr -48h
+start           = dword ptr -4
+string          = dword ptr  8
+val             = byte ptr  0Ch
+count           = dword ptr  10h
+
+                push    ebp
+                mov     ebp, esp
+                sub     esp, 48h
+                push    ebx
+                push    esi
+                push    edi
+                mov     eax, [ebp+string]
+                mov     [ebp+start], eax
+
+loc_40100F                             ; CODE XREF _strnset(char ,char,uint)+3Fj
+                mov     eax, [ebp+count]
+                mov     [ebp+var_48], eax
+                mov     ecx, [ebp+count]
+                sub     ecx, 1
+                mov     [ebp+count], ecx
+                cmp     [ebp+var_48], 0
+                jz      short loc_401041
+                mov     eax, [ebp+string]
+                movsx   ecx, byte ptr [eax]
+                test    ecx, ecx
+                jz      short loc_401041
+                mov     eax, [ebp+string]
+                mov     cl, [ebp+val]
+                mov     [eax], cl
+                mov     edx, [ebp+string]
+                add     edx, 1
+                mov     [ebp+string], edx
+                jmp     short loc_40100F
+; ---------------------------------------------------------------------------
+
+loc_401041                             ; CODE XREF _strnset(char ,char,uint)+22j
+                                        ; _strnset(char ,char,uint)+2Cj
+                mov     eax, [ebp+start]
+                pop     edi
+                pop     esi
+                pop     ebx
+                mov     esp, ebp
+                pop     ebp
+                retn
+_strnset@@YAPADPADDI@Z endp
